@@ -1,3 +1,12 @@
 body {
     font-family: arial;
 }
+
+.allergy{
+    color: #ff5500;
+    font-weight: bold;
+}
+
+#allergyFont {
+    text-transform: uppercase;
+}
