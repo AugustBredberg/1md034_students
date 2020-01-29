@@ -7,6 +7,16 @@ body {
     font-weight: bold;
 }
 
+.burgerSection{
+    #background-color: #ff5500;
+}
+
+.customerInformationSection{
+
+    background-color: black;
+    color: white;
+}
+
 #allergyFont {
     text-transform: uppercase;
 }
