@@ -20,3 +20,12 @@ body {
 #allergyFont {
     text-transform: uppercase;
 }
+
+button:hover {
+    cursor: pointer;
+    background-color: aqua;
+
+
+    color: aqua;
+}
+
