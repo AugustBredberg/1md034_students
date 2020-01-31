@@ -1,20 +1,85 @@
+
+.head{
+    padding-left: 32vw;
+    margin: 25px;
+
+}
+
 body {
     font-family: arial;
+    font-size: 2vh;
+    margin: 0 auto;
 }
+
+table {
+    padding: 50px;
+    width: 90vh;
+    height: 350px;
+    background-color: black;
+}
+
+footer {
+    padding-left: 40vw;
+}
+
+ul {
+    text-align: left;
+    list-style: inside;
+    display:table; margin:0 auto;
+}
+
+.pAlignLeft {
+    text-align: left;
+    list-style: inside;
+    display:table; margin:0 auto;
+}
+
 
 .allergy{
     color: #ff5500;
     font-weight: bold;
 }
 
+.burgerHeader{
+    height: 22vh;
+    padding-left: 42vw;
+    margin: 0px;
+    background-image: url("/img/header3.jpg");
+    background-repeat: no-repeat;
+    opactiy: 0.5;
+    #object-fit: cover;
+}
+
+div.burgerHeader{
+    opacity: 0.7;
+}
+
 .burgerSection{
     #background-color: #ff5500;
+    width: 100vw;
+    height: 60vh;
+    #padding-left: 21vw;
+    border: 4px dashed black;
 }
+
+.burgerDiv {
+    width: 30vh;
+}
+
+.burgerTable {
+    width: 1000px;
+    padding-left: 50px;
+}
+
 
 .customerInformationSection{
 
     background-color: black;
     color: white;
+    width: 100vw;
+    height: 50vh;
+    #padding-left: 20vw;
+    border: 4px dashed white;
 }
 
 #allergyFont {
