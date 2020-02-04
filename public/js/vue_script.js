@@ -1,5 +1,5 @@
 
-
+/**
 function menuItem(nm, kcl, veg, glut, lact, pth) {
     this.name = nm;
     this.kcal = kcl;
@@ -24,22 +24,14 @@ let burger3 = new menuItem("Halloumiburgaren", "1600 kcal", true, false, false, 
 let newBurger1 = new menuItem("Burgare ny 1", "1400 kcal", false, true, true, "/img/umamiBacon.jpg");
 let newBurger2 = new menuItem("Burgare ny 2", "1400 kcal", false, true, true, "/img/umamiBacon.jpg");
 
-/*
-let menu = [
-    burger1,
-    burger2,
-    burger3,
-    newBurger1,
-    newBurger2
-]
-*/
 
 let array = [burger1, burger2, burger3, newBurger1, newBurger2];
 
+**/
 const vm = new Vue({
     el: '#burgers',
     data: {
-        array: array
+        array: food
     }
 
 })
