@@ -1,5 +1,5 @@
 
-    
+/**
 function menuItem(nm, kcl, veg, glut, lact, pth) {
     this.name = nm;
     this.kcal = kcl;
@@ -86,7 +86,7 @@ for (i; i < menu.length; i++) {
     burgerGrid.appendChild(divElement);
     //document.getElementById("burger1").innerHTML = i.product();
 }
-
+**/
 /*
 let i = 0;
 let myElement = document.getElementById("burgerList");

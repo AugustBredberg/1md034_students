@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="js/js_script.js" defer></script>
-    <script src="js/vue_script.jps" defer></script>
+    <script src="js/vue_script.js" defer></script>
     <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 <body>
@@ -28,12 +28,36 @@
                 <p> Här hittar du vårat utbud</p>
             </div>
 
-                <div style=" overflow: hidden;" id="burgerGrid" class="burgerSection" align="">
-<!--
-                    <div v-for="burger in burgers">
-                        <li>  {{ burger.product() }} </li>
+              <!-- <div style=" overflow: hidden;" id="burgerGrid" class="burgerSection" align=""> -->
+
+                    <div id="burgers" class="burgerSection" align="">
+                        <div v-for="x in array">
+                            <h2> {{ x.name }}</h2>
+                           <img v-bind:src="x.path">
+                            <ul>
+                                <li> {{ x.kcal }} </li>
+                                <div v-if = "x.lactose" >
+                                    <li style="color:red">
+                                        Contains lactose!
+                                    </li>
+                                </div>
+
+                                <div v-if = "x.vegan">
+                                    <li style="color:red">
+                                        Vegan friendly!
+                                    </li>
+                                </div>
+
+                                <div v-if = "x.gluten">
+                                    <li style="color:red">
+                                        Contains gluten!
+                                    </li>
+                                </div>
+                            </ul>
+
+                        </div>
                     </div>
-    -->
+
 
                     <!-- THIS IS GOING TO BE REPLACED WITH JAVASCRIPT -->
             <!--
@@ -82,7 +106,7 @@
                 </div>
 
 -->
-                </div>
+          <!--    </div>  -->
         </section>
         <section>
 
