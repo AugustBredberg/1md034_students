@@ -28,3 +28,8 @@ console.log(burger3.product() );
 console.log(newBurger1.product() );
 console.log(newBurger2.product() );
 
+document.getElementById("burger1").innerHTML = burger1.product();
+document.getElementById("burger2").innerHTML = burger2.product();
+document.getElementById("burger3").innerHTML = burger3.product();
+document.getElementById("burger4").innerHTML = newBurger1.product();
+document.getElementById("burger5").innerHTML = newBurger2.product();
