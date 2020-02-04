@@ -7,11 +7,18 @@
     position: absolute;
 }
 
+img{
+    width: 15em;
+    height: 15em;
+}
+
 img.friesHeader {
     width: 100%;
     height: auto;
     opacity: 0.7;
 }
+
+
 
 head {
     top: 80px;
@@ -63,10 +70,13 @@ ul {
 
 .burgerSection{
     #background-color: #ff5500;
-    width: 100vw;
+    width: 96vw;
     height: 60vh;
     #padding-left: 21vw;
     border: 4px dashed black;
+    display: grid;
+    padding: 2vw;
+    grid-template-columns: 20% 20% 20% 20% 20%;
 }
 
 .burgerDiv {

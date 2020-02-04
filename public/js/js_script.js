@@ -1,5 +1,5 @@
 
-
+    
 function menuItem(nm, kcl, veg, glut, lact, pth) {
     this.name = nm;
     this.kcal = kcl;
@@ -17,20 +17,14 @@ function menuItem(nm, kcl, veg, glut, lact, pth) {
 
 
 
-let burger1 = new menuItem("BaconBurgaren", 1400, false, true, true, "/img/umamiBacon.jpg");
-let burger2 = new menuItem("Låtsas-kycklingburgaren", 1100, true, true, false, "/img/umamiBacon.jpg");
-let burger3 = new menuItem("Halloumiburgaren", 1600, true, false, false, "/img/umamiBacon.jpg");
+let burger1 = new menuItem("BaconBurgaren", "1400 kcal", false, true, true, "/img/umamiBacon.jpg");
+let burger2 = new menuItem("Låtsas-kycklingburgaren", "1100 kcal", true, true, false, "/img/nochick.jpg");
+let burger3 = new menuItem("Halloumiburgaren", "1600 kcal", true, false, false, "/img/halloumi.jpg");
 
-let newBurger1 = new menuItem("Burgare ny 1", 1400, false, true, true, "/img/umamiBacon.jpg");
-let newBurger2 = new menuItem("Burgare ny 2", 1400, false, true, true, "/img/umamiBacon.jpg");
+let newBurger1 = new menuItem("Burgare ny 1", "1400 kcal", false, true, true, "/img/umamiBacon.jpg");
+let newBurger2 = new menuItem("Burgare ny 2", "1400 kcal", false, true, true, "/img/umamiBacon.jpg");
 
-/*
-document.getElementById("burger1").innerHTML = burger1.product();
-document.getElementById("burger2").innerHTML = burger2.product();
-document.getElementById("burger3").innerHTML = burger3.product();
-document.getElementById("burger4").innerHTML = newBurger1.product();
-document.getElementById("burger5").innerHTML = newBurger2.product();
-*/
+
 let menu = [
     burger1,
     burger2,
@@ -41,6 +35,60 @@ let menu = [
 ]
 
 let i = 0;
+let burgerGrid = document.getElementById("burgerGrid");
+for (i; i < menu.length; i++) {
+    // Do something five times
+    let divElement = document.createElement("div");
+
+    let imgValue = document.createElement("img");
+    let burgerTitle = document.createElement("h2");
+    burgerTitle.innerHTML = menu[i].name;
+    imgValue.setAttribute('src', menu[i].path);
+    divElement.appendChild(burgerTitle);
+    divElement.appendChild(imgValue);
+
+    let listItem = document.createElement("li");
+    let listValue1 = document.createTextNode(menu[i].kcal);
+    let listValue2 = document.createTextNode(menu[i].vegan);
+    let listValue3 = document.createTextNode(menu[i].gluten);
+    let listValue4 = document.createTextNode(menu[i].lactose);
+    listItem.appendChild(listValue1);
+    //listItem.appendChild(listValue2);
+    //listItem.appendChild(listValue3);
+    //listItem.appendChild(listValue4);
+    divElement.appendChild(listItem);
+
+    if (menu[i].vegan)
+    {
+        let listItem = document.createElement("li");
+        let listValue = document.createTextNode("VEGAN");
+        listItem.style.color = "red";
+        listItem.appendChild(listValue);
+        divElement.appendChild(listItem);
+    }
+    if (menu[i].lactose)
+    {
+        let listItem = document.createElement("li");
+        let listValue = document.createTextNode("Contains LACTOSE");
+        listItem.style.color = "red";
+        listItem.appendChild(listValue);
+        divElement.appendChild(listItem);
+    }
+    if (menu[i].gluten)
+    {
+        let listItem = document.createElement("li");
+        let listValue = document.createTextNode("Contains GLUTEN");
+        listItem.style.color = "red";
+        listItem.appendChild(listValue);
+        divElement.appendChild(listItem);
+    }
+
+    burgerGrid.appendChild(divElement);
+    //document.getElementById("burger1").innerHTML = i.product();
+}
+
+/*
+let i = 0;
 let myElement = document.getElementById("burgerList");
 for (i; i < menu.length; i++) {
     // Do something five times
@@ -50,3 +98,5 @@ for (i; i < menu.length; i++) {
     myElement.appendChild(listItem);
     //document.getElementById("burger1").innerHTML = i.product();
 }
+ */
+

@@ -4,8 +4,8 @@
     <title>Bredställs Burgare</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src="js/js_script.js"></script>
-    <script src="js/vue_script.jps"></script>
+    <script src="js/js_script.js" defer></script>
+    <script src="js/vue_script.jps" defer></script>
     <script src="https://vuejs.org/js/vue.js"></script>
 </head>
 <body>
@@ -16,7 +16,6 @@
         </div>
         <img src="/img/header3.jpg" alt="" title="" class="friesHeader">
         <div id="myID">
-            {{ arbitraryVariableName }}
         </div>
       <hr>
         <section>
@@ -28,7 +27,16 @@
                 <h2> Välj burgare </h2>
                 <p> Här hittar du vårat utbud</p>
             </div>
-                <div style=" overflow: hidden;" class="burgerSection" align="center">
+
+                <div style=" overflow: hidden;" id="burgerGrid" class="burgerSection" align="">
+<!--
+                    <div v-for="burger in burgers">
+                        <li>  {{ burger.product() }} </li>
+                    </div>
+    -->
+
+                    <!-- THIS IS GOING TO BE REPLACED WITH JAVASCRIPT -->
+            <!--
                     <div style="width: 33%; float: left; " >
                         <h2> Baconburgaren </h2>
                         <img src="/img/umamiBacon.jpg" alt="Bacon Burger" title="BaconBurgaren" style="width:270px;height:250px;">
@@ -73,8 +81,8 @@
                         </ul>
                 </div>
 
-
-
+-->
+                </div>
         </section>
         <section>
 
