@@ -86,17 +86,69 @@ for (i; i < menu.length; i++) {
     burgerGrid.appendChild(divElement);
     //document.getElementById("burger1").innerHTML = i.product();
 }
-**/
-/*
-let i = 0;
-let myElement = document.getElementById("burgerList");
-for (i; i < menu.length; i++) {
-    // Do something five times
-    let listItem = document.createElement("li");
-    let listValue = document.createTextNode(menu[i].product());
-    listItem.appendChild(listValue);
-    myElement.appendChild(listItem);
-    //document.getElementById("burger1").innerHTML = i.product();
-}
- */
 
+
+
+let myButton = document.getElementById('finish');
+let paymeth = document.getElementsByName('paymethod');
+// In JavaScript you can either trigger an event directly on an object
+//myButton.onclick = functionName;
+
+// Or using the event handler function
+//myButton.addEventListener("click", functionName);
+
+// You can pass a defined function as above (no parentheses), or provide an anonymous function
+myButton.onclick = function () {
+    console.log("Button clicked!");
+    const name = document.getElementById("name").value;
+    const mail = document.getElementById("email").value;
+    const street = document.getElementById("gata").value;
+    const houseNr = document.getElementById("husnr").value;
+
+    const man = document.getElementById("man");
+    const woman = document.getElementById("woman");
+    const nonbinary = document.getElementById("nonbinary");
+    const secret = document.getElementById("secret");
+
+    const visa = document.getElementById("visa");
+    const mastercard = document.getElementById("mastercard");
+    const paypal = document.getElementById("paypal");
+    const bitcoin = document.getElementById("bitcoin");
+
+    let ans = [
+        name,
+        mail,
+        street,
+        houseNr
+    ];
+    if(man.checked){
+        ans.push("man");
+    }
+    if(woman.checked){
+        ans.push("woman");
+    }
+    if(nonbinary.checked){
+        ans.push("nonbinary");
+    }
+    if(secret.checked){
+        ans.push("secret");
+    }
+
+    if(visa.checked){
+        ans.push("visa");
+    }
+    if(woman.checked){
+        ans.push("woman");
+    }
+    if(nonbinary.checked){
+        ans.push("nonbinary");
+    }
+    if(secret.checked){
+        ans.push("secret");
+    }
+
+    for(x in ans){
+        console.log(ans[x]);
+    }
+}
+**/
