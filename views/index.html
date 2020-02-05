@@ -4,6 +4,7 @@
     <title>Bredställs Burgare</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <script src="https://vuejs.org/js/vue.js"></script>
@@ -18,7 +19,7 @@
         <div id="myID">
         </div>
       <hr>
-        <section>
+        <section id="burgerSect">
 
             <div class="burgerHeader">
                 <div class="burgerHeaderImage">
@@ -28,18 +29,22 @@
                 <p> Här hittar du vårat utbud</p>
             </div>
 
-              <!-- <div style=" overflow: hidden;" id="burgerGrid" class="burgerSection" align=""> -->
+           <!--   <div style=" overflow: hidden;" id="burgerGrid" class="burgerSection" align=""> -->
 
                     <div id="burgers" class="burgerSection" align="">
                         <div v-for="x in array">
                             <h2> {{ x.name }}</h2>
-                           <img v-bind:src="x.path">
+
+
+                            <img v-bind:src="x.path">
                             <ul>
+                                <input type="checkbox" v-bind:id="x.name" v-model="burgerChoice" v-bind:value = "x.name" >
                                 <li> {{ x.kcal }} </li>
                                 <div v-if = "x.lactose" >
                                     <li style="color:red">
                                         Contains lactose!
                                     </li>
+
                                 </div>
 
                                 <div v-if = "x.vegan">
@@ -57,6 +62,8 @@
 
                         </div>
                     </div>
+
+
 
 
                     <!-- THIS IS GOING TO BE REPLACED WITH JAVASCRIPT -->
@@ -106,9 +113,9 @@
                 </div>
 
 -->
-          <!--    </div>  -->
+          <!-- </div> -->
         </section>
-        <section>
+        <section id="contact">
 
                 <div style=" overflow: hidden;" class="customerInformationSection" align="center">
                     <h2> Kundinformation </h2>
@@ -116,23 +123,23 @@
                     <div style="width: 30%; float: left;">
                         <p>
                             <label for="name">Namn</label><br>
-                            <input type="text" id="name" name="helanamnet" required="required" placeholder="För och Efternamn" />
+                            <input type="text" id="name" name="helanamnet" required="required" v-model="namn" placeholder="För och Efternamn" />
                         </p>
                         <p>
                             <label for="email">E-mail</label><br>
-                            <input type="email" id="email" name="em" required="required" placeholder="E-mail adress" />
+                            <input type="email" id="email" name="em" required="required" v-model="email" placeholder="E-mail adress" />
                         </p>
                         <p>
                             <label for="gata">Gata</label><br>
-                            <input type="gata" id="gata" name="em" required="required" placeholder="Gatunamn" />
+                            <input type="gata" id="gata" name="em" required="required" v-model="gata"placeholder="Gatunamn" />
                         </p>
 
                         <p>
                             <label for="husnr">Hus-nummer</label><br>
-                            <input type="husnr" id="husnr" name="husnr" required="required" placeholder="0" />
+                            <input type="husnr" id="husnr" name="husnr" required="required"  v-model="husnr" placeholder="0" />
                         </p>
                         <br/>
-                        <button type="submit" id="finish"><img src="/img/buttons/finish.png" style="width:30px;height:30px;" />
+                        <button v-on:click="markDone(namn, email, gata, husnr, man, female, nonbinary, secret)" type="submit" id="finish"><img src="/img/buttons/finish.png" style="width:30px;height:30px;" />
                             Lägg beställning
                         </button>
                     </div>
@@ -140,23 +147,24 @@
                         <p>
                             <label for="paymethod"> Betalningsmetod </label><br />
 
-                            <button type="submit" id="paymethod"><img src="/img/buttons/visa.png" style="width:90px;height:50px;" /></button>
-                            <button type="submit" id="paymethod"><img src="/img/buttons/mastercard.png" style="width:80px;height:50px;" /></button>
-                            <button type="submit" id="paymethod"><img src="/img/buttons/paypal.png" style="width:50px;height:50px;" /></button>
-                            <button type="submit" id="paymethod"><img src="/img/buttons/bitcoin.png" style="width:50px;height:50px;" /></button>
+                            <button type="submit" name="paymethod" id="visa"><img src="/img/buttons/visa.png" style="width:90px;height:50px;" /></button>
+                            <button type="submit" name="paymethod" id="mastercard"><img src="/img/buttons/mastercard.png" style="width:80px;height:50px;" /></button>
+                            <button type="submit" name="paymethod" id="paypal"><img src="/img/buttons/paypal.png" style="width:50px;height:50px;" /></button>
+                            <button type="submit" name="paymethod" id="bitcoin"><img src="/img/buttons/bitcoin.png" style="width:50px;height:50px;" /></button>
                         </p>
 
                         <p class="pAlignLeft">
                             <label for="genus">Genus</label><br>
-                            <input type="radio" id="genus" name="fn" required="required" placeholder="First name" />
+                            <input type="radio" value="male" id="man" name="genus" v-model="man" required="required" placeholder="First name" />
                             Man <br/>
-                            <input type="radio" id="genus" name="ln" placeholder="Last name" />
+                            <input type="radio" value="female" id="woman" name="genus" v-model="female" placeholder="Last name" />
                             Kvinna <br/>
-                            <input type="radio" id="genus" name="em" required="required" placeholder="E-mail address" />
+                            <input type="radio" value="nonbinary"  id="nonbinary" name="genus" v-model="nonbinary" required="required" placeholder="E-mail address" />
                             Icke-binär <br/>
-                            <input checked= "checked" type="radio" id="genus" name="em" required="required" placeholder="E-mail address" />
+                            <input checked= "checked" value="secret" type="radio" id="secret" v-model="secret" name="genus" required="required" placeholder="E-mail address" />
                             Förborgad
                         </p>
+
 
 
                     </div>
@@ -173,6 +181,9 @@
             <p> &copy; 2020 Bredställs mat och tjänster</p>
             <p> augustbredberg@gmail.com </p>
             <p> 0761674575 </p>
+            <div id="orderInfo">
+
+            </div>
         </footer>
     </body>
 </main>
