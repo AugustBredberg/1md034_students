@@ -4,6 +4,9 @@
     <title>Bredställs Burgare</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="css/deli-very.css">
+
+    <script src="/socket.io/socket.io.js" defer></script>s
     <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
     <script src="js/vue_script.js" defer></script>
@@ -129,6 +132,8 @@
                             <label for="email">E-mail</label><br>
                             <input type="email" id="email" name="em" required="required" v-model="email" placeholder="E-mail adress" />
                         </p>
+
+                        <!--
                         <p>
                             <label for="gata">Gata</label><br>
                             <input type="gata" id="gata" name="em" required="required" v-model="gata"placeholder="Gatunamn" />
@@ -138,11 +143,13 @@
                             <label for="husnr">Hus-nummer</label><br>
                             <input type="husnr" id="husnr" name="husnr" required="required"  v-model="husnr" placeholder="0" />
                         </p>
-                        <br/>
-                        <button v-on:click="markDone(namn, email, gata, husnr, man, female, nonbinary, secret)" type="submit" id="finish"><img src="/img/buttons/finish.png" style="width:30px;height:30px;" />
-                            Lägg beställning
-                        </button>
+                        -->
+
+
+
+
                     </div>
+
                     <div style="width: 40%; float: left;">
                         <p>
                             <label for="paymethod"> Betalningsmetod </label><br />
@@ -164,9 +171,28 @@
                             <input checked= "checked" value="secret" type="radio" id="secret" v-model="secret" name="genus" required="required" placeholder="E-mail address" />
                             Förborgad
                         </p>
+                        <br/>
 
 
 
+                    </div>
+                    <h1> Click in the map! </h1>
+                    <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+                    <div class="view-box">
+                        <div id="dots" v-on:click="addOrder">
+                            <div
+                                    v-for="(order, key) in orders"
+                                    v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                                {{key}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <br/>
+                        <button v-on:click="markDone(namn, email, man, female, nonbinary, secret)" type="submit" id="finish"><img src="/img/buttons/finish.png" style="width:30px;height:30px;" />
+                            Lägg beställning
+                        </button>
                     </div>
                 </div>
 

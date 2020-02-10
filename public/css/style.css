@@ -94,7 +94,7 @@ ul {
     background-color: black;
     color: white;
     width: 100vw;
-    height: 50vh;
+    height: 100vh;
     #padding-left: 20vw;
     border: 4px dashed white;
 }
@@ -109,5 +109,10 @@ button:hover {
 
 
     color: aqua;
+}
+
+.view-box{
+    width: 100vw;
+    height: 30vh;
 }
 

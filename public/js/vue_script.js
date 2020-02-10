@@ -28,14 +28,14 @@ let newBurger2 = new menuItem("Burgare ny 2", "1400 kcal", false, true, true, "/
 let array = [burger1, burger2, burger3, newBurger1, newBurger2];
 
 **/
-
+'use strict';
+const socket = io();
 
 const vm = new Vue({
     el: '#burgers',
     data: {
         array: food,
         burgerChoice: []
-
 
     },
     methods: {
@@ -60,15 +60,59 @@ const cont = new Vue({
         female: false,
         nonbinary: false,
         secret: false,
-        gender: ""
+        gender: "",
+        orders: {}
+    },
+    created: function() {
+        /* When the page is loaded, get the current orders stored on the server.
+         * (the server's code is in app.js) */
+        socket.on('initialize', function(data) {
+            this.orders = data.orders;
+        }.bind(this));
+
+        /* Whenever an addOrder is emitted by a client (every open map.html is
+         * a client), the server responds with a currentQueue message (this is
+         * defined in app.js). The message's data payload is the entire updated
+         * order object. Here we define what the client should do with it.
+         * Spoiler: We replace the current local order object with the new one. */
+        socket.on('currentQueue', function(data) {
+            this.orders = data.orders;
+        }.bind(this));
     },
     methods: {
-        markDone: function(namn, email, gata, husnr, man, female, nonbinary, secret) {
+        getNext: function() {
+            /* This function returns the next available key (order number) in
+             * the orders object, it works under the assumptions that all keys
+             * are integers. */
+            let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
+                return Math.max(last, next);
+            }, 0);
+            return lastOrder + 1;
+        },
+        addOrder: function(event) {
+            /* When you click in the map, a click event object is sent as parameter
+             * to the function designated in v-on:click (i.e. this one).
+             * The click event object contains among other things different
+             * coordinates that we need when calculating where in the map the click
+             * actually happened. */
+            let offset = {
+                x: event.currentTarget.getBoundingClientRect().left,
+                y: event.currentTarget.getBoundingClientRect().top,
+            };
+            socket.emit('addOrder', {
+                orderId: this.getNext(),
+                details: {
+                    x: event.clientX - 10 - offset.x,
+                    y: event.clientY - 10 - offset.y,
+                },
+                orderItems: ['Beans', 'Curry'],
+            });
+        },
+        markDone: function(namn, email, man, female, nonbinary, secret) {
             let info = [
                 namn,
-                email,
-                gata,
-                husnr
+                email
+
             ]
 
             let orderInfo = document.getElementById("orderInfo");
@@ -124,6 +168,7 @@ const cont = new Vue({
             mailI.appendChild(mailV);
             divElement.appendChild(mailI);
 
+            /*
             let gataI = document.createElement("p");
             let gataV = document.createTextNode(gata);
             gataI.appendChild(gataV);
@@ -134,12 +179,13 @@ const cont = new Vue({
             husnrI.appendChild(husnrV);
             divElement.appendChild(husnrI);
 
-
+*/
 
 
             /* Add your function's code just like in
             pure JavaScript within these curly braces */
             let burgersChecked = vm.getBurgerChoice();
+
             console.log(burgersChecked);
 
             for(burg in burgersChecked){
